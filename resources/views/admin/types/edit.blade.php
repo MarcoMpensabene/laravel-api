@@ -6,8 +6,8 @@
         <div class="row justify-content-center">
             <div class="col-8">
                 <h1>EDIT TYPE </h1>
-                <form action="{{route('admin.types.store')}}" method="POST" id="add-form" enctype="multipart/form-data">
-                    @method('POST')
+                <form action="{{route('admin.types.update' , $type)}}" method="POST" id="add-form" enctype="multipart/form-data">
+                    @method('PUT')
                     @csrf
                     <div class="mb-3">
                         <label for="name">Type name</label>

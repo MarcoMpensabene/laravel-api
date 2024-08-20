@@ -59,7 +59,7 @@ class TechnologyController extends Controller
      */
     public function update(Request $request, Technology $technology)
     {
-        $data = $request->validated();
+        $data = $request->all();
         $technology->update($data);
         return redirect()->route('admin.technologies.show', $technology)->with('message', $technology->name . " Has Been Edited");
     }

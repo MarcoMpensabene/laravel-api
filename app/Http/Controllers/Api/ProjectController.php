@@ -10,10 +10,25 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $project = Project::paginate(5); // lazy loading 5 elementi per pagina
+        $project = Project::with("user", "type", "technologies")->paginate(5); // lazy loading 5 elementi per pagina , nel with aggiungiamo le relazioni con le altre risorse
         // $project = Project::all(); // ? Tutti i progetti quindi eager loading
-        return response()->json($project); // ! Ritrona un json
+        return response()->json(
+            [
+                'success' => true,
+                'results' => $project,
+            ]
+        ); // ! Ritrona un json
     }
 
-    public function show(Project $project) {}
+    public function show(string $id)
+    {
+        $project = Project::with("user", "type", "technologies")->findOrfail($id);
+        // $project = Project::all(); // ? Tutti i progetti quindi eager loading
+        return response()->json(
+            [
+                'success' => true,
+                'results' => $project,
+            ]
+        );
+    }
 }

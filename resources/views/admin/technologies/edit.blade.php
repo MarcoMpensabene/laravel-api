@@ -6,8 +6,8 @@
         <div class="row justify-content-center">
             <div class="col-8">
                 <h1>Update Technology </h1>
-                <form action="{{route('admin.technologies.store')}}" method="POST" id="add-form" enctype="multipart/form-data">
-                    @method('POST')
+                <form action="{{route('admin.technologies.update' , $technology)}}" method="POST" id="add-form" enctype="multipart/form-data">
+                    @method('PUT')
                     @csrf
                     <div class="mb-3">
                         <label for="name">Technology name</label>
