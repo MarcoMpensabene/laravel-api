@@ -39,12 +39,12 @@
                             <td>{{ $project->user->name }}</td>
                             <td>{{ Str::limit($project->image_url, 20) }}</td> <!-- Limita la lunghezza -->
                             <td>
-                            @forelse ($project->technologies as $technology)
-                                <span class="badge rounded-pill" style="background-color: {{$technology->color}}">{{ Str::limit($technology->name , 20) }}</span> @if (!$loop->last) | @endif
-                                {{--  ! if che serve a inserire quasiasi cosa fino a che non arriva all'ultimo elemento --}}
-                            @empty
-                                    <td class="badge rounded-pill">{{ Str::limit("No Technology used" , 20) }}</td>
-                            @endforelse
+                                @forelse ($project->technologies as $technology)
+                                    <span class="badge rounded-pill" style="background-color: {{$technology->color}}">{{ Str::limit($technology->name , 20) }}</span> @if (!$loop->last) | @endif
+                                    {{--  ! if che serve a inserire quasiasi cosa fino a che non arriva all'ultimo elemento --}}
+                                @empty
+                                        <td class="badge rounded-pill">{{ Str::limit("No Technology used" , 20) }}</td>
+                                @endforelse
                             </td>
                             <td>
                                 <div class="d-flex">

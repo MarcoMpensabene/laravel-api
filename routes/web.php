@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Admin\TypeController;
+use App\Http\Controllers\Api\ProjectController as ApiProjectController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -37,3 +38,7 @@ Route::middleware('auth')->name('admin.')->prefix('admin/')->group(
         Route::resource('technologies', TechnologyController::class);
     }
 );
+
+//rotte API
+Route::get("/projects", [ApiProjectController::class, "index"])->name("api.projects.index");
+Route::get("/projects/{project}", [ApiProjectController::class, "show"])->name("api.projects.show");
